@@ -8,7 +8,7 @@ def get_font_size(textarea, text, font_name, pixel_gap = 7):
     
     for point_size in range(5, 90):
         wrapped_text = []
-        font = ImageFont.truetype("automata/MODERNE SANS.ttf", point_size)
+        font = ImageFont.truetype("templates/MODERNE SANS.ttf", point_size)
                 
         avg_char_width = sum(font.getbbox(char)[2] for char in ascii_letters) / len(ascii_letters)
         max_char_height = max(font.getbbox(char)[3] - font.getbbox(char)[1] for char in ascii_letters)

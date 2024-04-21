@@ -1,15 +1,10 @@
 import pandas as pd
-from make_video import generate_video
+from utils.make_video import generate_video
 import ffmpeg
 import os
 
 
 input_audio = ffmpeg.input('templates/audio_template.mp3')
-
-
-
-
-
 
 filepath = "Data/1.csv"
 df = pd.read_csv(filepath)

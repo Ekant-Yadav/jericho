@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 from string import ascii_letters
 import textwrap
-from font_size import get_font_size
+from utils.font_size import get_font_size
 
 
 
@@ -15,7 +15,7 @@ def generate_video(index, row):
     f=0
 
     question = row["Question"]
-    question_font_path = "automata/Roboto-Bold.ttf"
+    question_font_path = "templates/Roboto-Bold.ttf"
     ques_params = get_font_size((800,235),question,question_font_path )
     ques  = {
         "text" : ques_params[0],
@@ -29,7 +29,7 @@ def generate_video(index, row):
 
 
     options = [row["Option 1"], row["Option 2"], row["Option 3"]]
-    options_font_path = "automata/Roboto-Bold.ttf"
+    options_font_path = "templates/Roboto-Bold.ttf"
     option_params = [get_font_size((800,140), i, options_font_path) for i in options]
     opt_text_size = min(i[1] for i in option_params)
     opt = {
@@ -45,7 +45,7 @@ def generate_video(index, row):
 
 
     answer = row["Answer"]
-    answer_font_path = "automata/Roboto-Bold.ttf"
+    answer_font_path = "templates/Roboto-Bold.ttf"
     ans_params = get_font_size((900,200),answer,answer_font_path )
     ans  = {
         "text" : ans_params[0],
@@ -97,22 +97,9 @@ def generate_video(index, row):
                 
                 # Get back the image to OpenCV  
                 frame = cv2.cvtColor(np.array(pil_im), cv2.COLOR_RGB2BGR) 
-                # cv2.putText(frame,  
-                #             "answer",  
-                #             (50, 50),  
-                #             font, 1,  
-                #             (0, 255, 255),  
-                #             2,  
-                #             cv2.LINE_4)
-
-        
-            # Display the resulting frame 
 
             #Adding to output
-            output.write(frame) 
-            # b = cv2.resize(frame,(540,960),fx=0,fy=0, interpolation = cv2.INTER_CUBIC)
-
-            # cv2.imshow('video', b) 
+            output.write(frame)
         
             # creating 'q' as the quit  
             # button for the video 
